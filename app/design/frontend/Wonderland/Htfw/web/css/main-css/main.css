@@ -1111,7 +1111,7 @@ html {
     text-align: left;
     text-transform: uppercase;
     color: #fff;
-    font-family: 'Gotham Book';
+    font-family: 'Gotham';
     font-weight: 400;
     font-size: 1em;
     border-radius: 0;
@@ -1137,8 +1137,8 @@ html {
     right: 0;
     left: 0;
     top: 0;
-    margin-top: 73px;
-    background-color: red;
+    margin-top: 4.5625em;
+    background-color: #434343;
     z-index: 1;
   }
   .page-footer .footer.content .footer.links li {
@@ -1242,22 +1242,26 @@ html {
 .page-main .banner.home-banner .blocks-promo .title {
   text-transform: none;
 }
-.page-main .banner .blocks-promo .title {
+.page-main .banner .blocks-promo .title,
+.page-main .banner .category-image .title {
   font-family: 'Playfair Display';
   font-size: 4.5em;
   line-height: 1.1;
   margin-bottom: 0.5em;
   text-transform: uppercase;
 }
-.page-main .banner .blocks-promo .info {
+.page-main .banner .blocks-promo .info,
+.page-main .banner .category-image .info {
   font-size: 1em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-weight: 500;
   font-family: "Gotham";
   margin-bottom: 0;
+  display: block;
 }
-.page-main .banner .blocks-promo .content {
+.page-main .banner .blocks-promo .content,
+.page-main .banner .category-image .content {
   max-width: 100%;
   width: 100%;
   top: 50%;
@@ -1272,6 +1276,8 @@ html {
   color: #fff;
   margin: 0;
   text-align: center;
+  position: absolute;
+  z-index: 2;
 }
 .page-main .banner-blog-main,
 .page-main .category-image {
@@ -1629,7 +1635,8 @@ html {
     max-width: 31.25em;
     margin: 2em auto 0 auto;
   }
-  .page-main .banner .blocks-promo .content {
+  .page-main .banner .blocks-promo .content,
+  .page-main .banner .category-image .content {
     width: 100%;
     left: 0;
     right: 0;
@@ -1637,13 +1644,15 @@ html {
     max-width: 31.25em;
     margin: 0 auto;
   }
-  .page-main .banner .blocks-promo .title {
+  .page-main .banner .blocks-promo .title,
+  .page-main .banner .category-image .title {
     font-size: 3.5em;
     text-transform: uppercase;
     margin: 0.1em 0 0.5em 0;
     letter-spacing: 0.05em;
   }
-  .page-main .banner .blocks-promo .btn {
+  .page-main .banner .blocks-promo .btn,
+  .page-main .banner .category-image .btn {
     width: 100%;
   }
   .page-main .hide-md {
@@ -1969,6 +1978,9 @@ html {
 .product-page {
   text-align: center;
 }
+.product-page .column.main {
+  padding-top: 0;
+}
 .product-page .toolbar {
   max-width: 1115px;
   margin: 5em auto 2em auto;
@@ -1983,6 +1995,7 @@ html {
   display: -o-inline-flex;
   display: inline-flex;
   justify-content: space-between;
+  position: relative;
 }
 .product-page .toolbar select {
   color: #b80056;
@@ -2009,8 +2022,16 @@ html {
 .product-page .toolbar-products:after {
   display: none;
 }
+.product-page .sort-desc:before,
+.product-page .sort-asc:before {
+  font-family: 'Material-Design-Iconic-Font';
+  color: #b80056;
+}
 .product-page .sort-desc:before {
-  display: none;
+  content: '\f2fe';
+}
+.product-page .sort-asc:before {
+  content: '\f303';
 }
 .product-page .sorter {
   float: none;
@@ -2033,6 +2054,11 @@ html {
 }
 .page-products .columns {
   padding-top: 0;
+}
+@media (min-width: 767px) {
+  .product-page .column.main {
+    padding-top: 0;
+  }
 }
 @media (max-width: 575px) {
   .product-page .toolbar {
@@ -2543,14 +2569,51 @@ html {
   position: relative;
 }
 .about-page .map-section .map-img {
-  background-size: cover;
-  height: 980px;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
+  background-origin: unset;
+  background-size: cover;
+  padding-bottom: 58%;
 }
 @media (max-width: 767px) {
   .about-page .about-block-box .block-box-container .block-box {
     flex: 0 0 100%;
     max-width: 100%;
   }
+}
+.country-page .dropdown-container {
+  padding: 1em 1.5em;
+}
+.country-page .select-country-dropdown {
+  max-width: 520px;
+  margin: 2em auto;
+  height: 4.5em;
+  position: relative;
+}
+.country-page .select-country-dropdown select {
+  background-color: #6c6c6c;
+  color: #fff;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  border: 0;
+  padding: 0.3125em 1.5625em 0.25em 1.25em;
+  font-family: 'Gotham-Book';
+}
+.country-page .select-country-dropdown:after {
+  content: '\f2f9';
+  font-family: 'Material-Design-Iconic-Font';
+  font-size: 1.7em;
+  color: #fff;
+  line-height: 0.5em;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-right: 1em;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
 }
