@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
+
+	    <li class="level0 ui-menu-item">
+	        <a href="#" class="level-top ui-corner-all">
+	            <span>Offers</span>
+	        </a>
+	    </li>
+	    <li class="level0 ui-menu-item">
+	        <a href="#" class="level-top ui-corner-all">
+	            <span>Rewards</span>
+	        </a>
+	    </li>
+	    <li class="level0 ui-menu-item">
+	        <a style="cursor: pointer;" class="level-top ui-corner-all">
+	            <span>No minimum order</span>
+	        </a>
+	    </li>
+	    <li class="level0 ui-menu-item">
+	    	<?php // $block->getChildHtml()?>
+	    	<?php echo $block->getChildHtml('topSearch') ?>
+	    </li>
+	    <li class="level0 ui-menu-item">
+	        <a style="cursor: pointer;" class="level-top ui-corner-all">
+	            <span>Free Delivery over £175</span>
+	        </a>
+	    </li>
+	    <li class="level0 ui-menu-item">
+	        <!-- <a href="#" class="level-top ui-corner-all">
+	            <span>There is <span>1 item</span> in your Basket.</span>
+	        </a> -->
+	        <?php echo $block->getChildHtml('minicart') ?>
+	    </li>
+	    <li class="level0 ui-menu-item">
+	        <a href="<?php echo $block->getUrl('customer/account/login') ?>" class="level-top ui-corner-all">
+	            <span>Login</span>
+	        </a>
+	    </li>
+	</ul>
+</nav>

@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+$headerBlock = $block->getLayout()->createBlock('\Magento\Theme\Block\Html\Topmenu');
+$columnsLimit = 0; 
+//$columnsLimit = $headerBlock->getColumnsLimit() ?: 0; 
+$_menu = $headerBlock->getHtml('nav item', 'submenu', $columnsLimit);
+?>
+
+<ul class="footer links" style="/* display: none; */">
+    <li class="nav item">
+        <a href="<?php echo $block->getUrl('about-us') ?>">About us</a>
+    </li>
+    <?php echo $_menu ?>
+</ul>
+
+<style type="text/css">
+    .footer.content { 
+        margin-top: 0 !important;
+    }
+</style>

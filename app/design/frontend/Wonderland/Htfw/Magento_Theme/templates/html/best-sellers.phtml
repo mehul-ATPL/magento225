@@ -1,0 +1,83 @@
+<?php
+use Magento\Framework\App\Action\Action;
+
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+$abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+$productCollectionFactory = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
+$collection = $productCollectionFactory->create();
+$collection->addAttributeToSelect('*');
+$collection->setPageSize(6); // selecting only 3 products
+$store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+
+$productBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\ListProduct');
+?>
+
+
+<div>
+    <!-- start-product-list-title -->
+    <div class="content-heading">
+        <p class="info">Buyers guide</p>
+        <h2 class="title">Best Sellers</h2>
+    </div>
+    <!-- end-product-list-title -->
+    <!-- start-product-list -->
+    <div class="block widget block-products-list grid">
+        <div class="block-content">
+            <div class="products-grid grid">
+                <ol class="product-items widget-product-grid">
+
+                	<?php foreach ($collection as $product) { 
+                		$productImageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' . $product->getData('image');
+                		//echo "<pre>";print_r(get_class_methods($abstractProductBlock));die;
+                		$postParams = $productBlock->getAddToCartPostParams($product); 
+                		//echo "<pre>";print_r($postParams);die;
+            		?>
+	                    <li class="product-item">
+	                        <div class="product-item-info">
+	                            <div class="product-item-name">
+	                                <?php echo $product->getName(); ?>
+	                            </div>
+	                            <a href="<?php echo $product->getProductUrl(); ?>" class="product-item-photo">
+	                                <span class="product-image-container">
+	                                <span class="product-image-wrapper">
+	                                  <img src="<?php echo $productImageUrl; ?>" class="product-image-photo">
+	                                </span>
+	                                </span>
+	                            </a>
+	                            <div class="product-item-details">
+	                                <div class="price-box price-final_price">
+	                                    <span class="price-container price-final_price tax weee">
+	                                  		<span class="price-wrapper">
+	                                    		<span class="price"><?php echo $abstractProductBlock->getProductPrice($product); ?></span>
+                                    		</span>
+                                    	</span>
+	                                </div>
+	                                <div class="offer">Was: £10.99 (51% off) <?php //echo $product->getPrice(); ?></div>
+	                            	<div class="product-item-actions">
+	                                    <div class="actions-primary">
+	                                    	<?php if($product->isSaleable()) { ?>
+		                                        <form data-role="tocart-form" action="<?php  echo $postParams['action']; ?>" method="post">
+                                                    <input type="hidden" name="product" value="<?php  echo $postParams['data']['product']; ?>">
+                                                    <input type="hidden" name="<?=  Action::PARAM_NAME_URL_ENCODED ?>" value="<?=  $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                                    <?php echo $block->getBlockHtml('formkey')?>
+                                                    <button type="submit"
+                                                            title="<?php echo $block->escapeHtml(__('Quickshop')); ?>"
+                                                            class="action tocart primary btn btn-filled btn-sm btn-submit btn-block">
+                                                        <span><?php  echo __('Quickshop') ?></span>
+                                                    </button>
+                                                </form>
+		                                    <?php } ?>
+		                                </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </li>                		
+                	<?php } ?>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- end-product-list -->
+</div>
+
