@@ -63,7 +63,6 @@
         </referenceContainer>
         <container name="deleteElement" htmlTag="div"/>
         <move element="page.main.title" destination="category.image"/>
-        <!--<move element="product_list_toolbar" destination="deleteElement"/>-->
         <referenceContainer name="deleteElement" remove="true"/>
     </body>
 </page>

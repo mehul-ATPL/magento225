@@ -11,39 +11,83 @@
 <?php $_product = $block->getProduct(); ?>
 <?php $buttonTitle = __('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
+<div class="product-options-bottom">
 <div class="box-tocart">
     <div class="fieldset">
         <?php if ($block->shouldRenderQuantity()): ?>
         <div class="field qty">
-            <label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></label>
-            <div class="control">
+            <div class="control" data-bind="scope: 'qty_change'">
+                <button class="btn btn-minus"  data-bind="click: decreaseQty"></button>
                 <input type="number"
                        name="qty"
                        id="qty"
-                       value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>"
-                       title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                       value="<?=  $block->getProductDefaultQty() * 1 ?>"
+                       title="<?=  __('Qty') ?>"
                        class="input-text qty"
                        data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
-                       />
+                />
+                <button class="btn btn-plus" data-bind="click: increaseQty"></button>
             </div>
         </div>
+        <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Magento_Ui/js/core/app": {
+                        "components": {
+                            "qty_change": {
+                                "component": "Wonderland_Catalog/js/view/product/view/qty_change",
+                                "defaultQty": <?php echo $block->getProductDefaultQty() * 1 ?>
+                            }
+                         }
+                    }
+                }
+            }
+        </script>
         <?php endif; ?>
         <div class="actions">
             <button type="submit"
-                    title="<?= /* @escapeNotVerified */ $buttonTitle ?>"
+                    title="<?=  $buttonTitle ?>"
                     class="action primary tocart"
                     id="product-addtocart-button">
-                <span><?= /* @escapeNotVerified */ $buttonTitle ?></span>
+                <span><?=  $buttonTitle ?></span>
             </button>
             <?= $block->getChildHtml('', true) ?>
         </div>
     </div>
 </div>
+</div>
 <?php endif; ?>
-<script type="text/x-magento-init">
-    {
-        "#product_addtocart_form": {
-            "Magento_Catalog/js/validate-product": {}
+
+<?php if ($block->isRedirectToCartEnabled()) : ?>
+    <script type="text/x-magento-init">
+        {
+            "#product_addtocart_form": {
+                "Magento_Catalog/js/validate-product": {}
+            }
         }
-    }
-</script>
+    </script>
+<?php else : ?>
+    <script>
+        require([
+            'jquery',
+            'mage/mage',
+            'Magento_Catalog/product/view/validation',
+            'Magento_Catalog/js/catalog-add-to-cart'
+        ], function ($) {
+            'use strict';
+
+            $('#product_addtocart_form').mage('validation', {
+                radioCheckboxClosest: '.nested',
+                submitHandler: function (form) {
+                    var widget = $(form).catalogAddToCart({
+                        bindSubmit: false
+                    });
+
+                    widget.catalogAddToCart('submitForm', $(form));
+
+                    return false;
+                }
+            });
+        });
+    </script>
+<?php endif; ?>

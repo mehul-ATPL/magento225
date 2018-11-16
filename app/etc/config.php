@@ -42,7 +42,7 @@ return [
         'Magento_Cookie' => 1,
         'Magento_Email' => 1,
         'Magento_CurrencySymbol' => 1,
-        'FishPig_WordPress' => 1,
+        'FishPig_WordPress' => 0,
         'Magento_Integration' => 1,
         'Magento_CustomerImportExport' => 1,
         'Magento_Deploy' => 1,
@@ -127,6 +127,7 @@ return [
         'Shopial_Facebook' => 1,
         'Strategery_Infinitescroll' => 1,
         'Temando_Shipping' => 1,
-        'Vertex_Tax' => 1
+        'Vertex_Tax' => 1,
+        'Wonderland_Catalog' => 1
     ]
 ];

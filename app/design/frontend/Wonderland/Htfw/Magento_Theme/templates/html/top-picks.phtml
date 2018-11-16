@@ -1,7 +1,8 @@
 <?php
 
 	$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
-	$abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+    //$abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+	$abstractProductBlock = $block->getLayout()->createBlock('\Wonderland\Catalog\Block\Product\AbstractProduct');
 	$productCollectionFactory = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
 	$collection = $productCollectionFactory->create();
 	$collection->addAttributeToSelect('*');
@@ -58,7 +59,6 @@
                                 		</span>
                                 	</span>
                                 </div>
-                                <div class="offer">Was: £10.99 (51% off) <?php //echo $product->getPrice(); ?></div>
                             	<div class="product-item-actions">
                                     <div class="actions-primary">
                                     	<?php if($product->isSaleable()) { ?>
