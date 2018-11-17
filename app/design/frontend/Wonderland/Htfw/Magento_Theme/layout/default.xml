@@ -17,7 +17,7 @@
                             <argument name="label" translate="true" xsi:type="string">Skip to Content</argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Magento_Store::switch/languages.phtml"/>
+                    <!--<block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Magento_Store::switch/languages.phtml"/>-->
                 </container>
             </container>
             <container name="header-wrapper" label="Page Header" as="header-wrapper" htmlTag="div" htmlClass="header content">
@@ -33,7 +33,6 @@
                 </arguments>
             </block>
         </referenceBlock>
-
         <referenceContainer name="footer-container">
             <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
                 <block class="Magento\Framework\View\Element\Html\Links" name="footer-links" template="Magento_Theme::html/footer-links.phtml" before="form.subscribe"/>
@@ -48,13 +47,5 @@
         <referenceBlock name="reviews.tab" remove="true" />
         <referenceBlock name="product.review.form" remove="true" />
         <referenceBlock name="product.info.review" remove="true" />
-
-        <referenceContainer name="content">
-            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
-                   template="Magento_Customer::js/section-config.phtml"/>
-            <block name="customer.customer.data"
-                   class="Magento\Customer\Block\CustomerData"
-                   template="Magento_Customer::js/customer-data.phtml"/>
-        </referenceContainer>
     </body>
 </page>

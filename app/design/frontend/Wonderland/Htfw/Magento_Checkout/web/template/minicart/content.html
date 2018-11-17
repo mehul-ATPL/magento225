@@ -8,11 +8,10 @@
     <strong>
         <span class="text" translate="'My Cart'"/>
         <span
-            class="qty empty"
-            text="getCartParam('summary_count')"
-            data-bind="css: { empty: !!getCartParam('summary_count') == false },
+                class="qty empty"
+                text="getCartParam('summary_count')"
+                data-bind="css: { empty: !!getCartParam('summary_count') == false },
                        attr: { title: $t('Items in Cart') }">
-           <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
         </span>
     </strong>
 </div>

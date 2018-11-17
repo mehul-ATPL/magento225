@@ -58,6 +58,13 @@
 </div>
 <?php endif; ?>
 
+<!--<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>-->
 <?php if ($block->isRedirectToCartEnabled()) : ?>
     <script type="text/x-magento-init">
         {
@@ -89,5 +96,8 @@
                 }
             });
         });
+
+
+
     </script>
 <?php endif; ?>

@@ -1432,6 +1432,7 @@ html {
 }
 .page-main .block-products-list .product-image-container {
   width: 15em;
+  margin-bottom: 1em;
 }
 .page-main .block-products-list .product-image-wrapper {
   padding-bottom: 125%;
@@ -1473,7 +1474,7 @@ html {
   text-align: center;
 }
 .page-main .block-products-list .price-box {
-  margin: 0.5em 0;
+  margin: 0;
 }
 .page-main .block-products-list .price-box .price {
   font-size: 1.3em;
@@ -1518,6 +1519,7 @@ html {
   color: #363636;
   padding: 0 0.5em 0.5em 0.5em;
   min-height: 3.4375em;
+  margin-left: 0 !important;
 }
 .page-main .block-products-list .offer,
 .page-main .block-products-list .old-price {
@@ -1525,6 +1527,20 @@ html {
 }
 .page-main .block-products-list .old-price {
   display: block;
+}
+.page-main .block-products-list .old-price .price,
+.page-main .block-products-list .old-price .price-label {
+  color: #606060;
+  font-size: 1em;
+}
+.page-main .block-products-list .old-price .price {
+  text-decoration: line-through;
+}
+.page-main .block-products-list .old-price .price-label {
+  display: none;
+}
+.page-main .block-products-list .old-price .price-wrapper:before {
+  content: 'Was:';
 }
 .page-main .block-products-list .product-item-name,
 .page-main .block-products-list .offer,
@@ -1578,7 +1594,7 @@ html {
   font-size: 0.9rem;
 }
 .page-main .block-products-list.grid-4 .price-box .price {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .page-main .block-products-list.grid-4 .action {
   font-size: 0.875em;
@@ -1682,7 +1698,7 @@ html {
     display: none;
   }
   .block-products-list .product-item-details {
-    min-height: 8.875em;
+    min-height: 8em;
     position: relative;
   }
   .block-products-list .product-item-details .product-item-actions {
@@ -2387,7 +2403,7 @@ html {
 }
 .single-product-page .fotorama__img {
   padding: 2em 0;
-  max-width: 160px;
+  max-width: 75px;
   margin: 0 auto;
 }
 .single-product-page .btn-minus,
@@ -2439,12 +2455,13 @@ html {
   .single-product-page .product.media,
   .single-product-page .product-info-main {
     display: table-cell;
-    vertical-align: top;
+    vertical-align: middle;
     float: none;
   }
   .single-product-page .product.media {
     background-color: #fff;
     position: relative;
+    min-height: 350px;
   }
   .single-product-page .product.media .fotorama__img {
     position: absolute;

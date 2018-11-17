@@ -50,6 +50,7 @@ $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 	        <!-- <a href="#" class="level-top ui-corner-all">
 	            <span>There is <span>1 item</span> in your Basket.</span>
 	        </a> -->
+            <?php echo $block->getChildHtml('checkout_page_head_components') ?>
 	        <?php echo $block->getChildHtml('minicart') ?>
 	    </li>
 	    <!--<li class="level0 ui-menu-item">
@@ -91,14 +92,17 @@ $customerSession = $objectManager->get('Magento\Customer\Model\Session');
             </div>
         </li>
         <?php } else { ?>
-        <li class="level0 ui-menu-item">
+        <li class="level0 ui-menu-item customer-welcome">
             <a href="<?php echo $block->getUrl('customer/account/login') ?>" class="level-top ui-corner-all">
-                <span>Login</span>
+                <span class="customer-name active">Login</span>
             </a>
         </li>
 
         <?php } ?>
-        <?php //echo $block->getChildHtml('my-account-link') ?>
-
+        <li>
+            <?php /* echo $block->getChildHtml('my-account-link') ?>
+            <?php echo $block->getChildHtml('customer'); ?>
+            <?php echo $block->getChildHtml('authorization-link');*/ ?>
+        </li>
     </ul>
 </nav>

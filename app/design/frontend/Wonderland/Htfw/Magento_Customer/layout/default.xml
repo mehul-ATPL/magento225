@@ -8,12 +8,13 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="catalog.topnav">
-            <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
-                <arguments>
-                    <argument name="label" xsi:type="string" translate="true">My Account</argument>
-                    <argument name="sortOrder" xsi:type="number">110</argument>
-                </arguments>
-            </block>
+            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="Magento_Customer::account/customer.phtml" />
+            <!--<block class="Magento\Customer\Block\Account\Link" name="my-account-link">-->
+                <!--<arguments>-->
+                    <!--<argument name="label" xsi:type="string" translate="true">My Account</argument>-->
+                    <!--<argument name="sortOrder" xsi:type="number">110</argument>-->
+                <!--</arguments>-->
+            <!--</block>-->
             <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
@@ -40,6 +41,15 @@
                     </argument>
                 </arguments>
             </block>
+            <!--<block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"-->
+                   <!--template="Magento_Customer::js/section-config.phtml"/>-->
+            <!--<block name="customer.customer.data"-->
+                   <!--class="Magento\Customer\Block\CustomerData"-->
+                   <!--template="Magento_Customer::js/customer-data.phtml"/>-->
+            <!--<block name="customer.data.invalidation.rules" class="Magento\Customer\Block\CustomerScopeData"
+                   template="Magento_Customer::js/customer-data/invalidation-rules.phtml"/>-->
+        </referenceBlock>
+        <referenceContainer name="content">
             <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
                    template="Magento_Customer::js/section-config.phtml"/>
             <block name="customer.customer.data"
@@ -47,6 +57,6 @@
                    template="Magento_Customer::js/customer-data.phtml"/>
             <block name="customer.data.invalidation.rules" class="Magento\Customer\Block\CustomerScopeData"
                    template="Magento_Customer::js/customer-data/invalidation-rules.phtml"/>
-        </referenceBlock>
+        </referenceContainer>
     </body>
 </page>

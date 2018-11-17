@@ -80,6 +80,7 @@ define([
         shoppingCartUrl: window.checkout.shoppingCartUrl,
         maxItemsToDisplay: window.checkout.maxItemsToDisplay,
         cart: {},
+        itemRenderer: {},
 
         /**
          * @override
