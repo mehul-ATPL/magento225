@@ -11,6 +11,14 @@ echo $this->getLayout()
           ->setBlockId('contact-banner')
           ->toHtml();
 
+
+echo $this->getLayout()
+    ->createBlock('Magento\Cms\Block\Block')
+    ->setBlockId('contact-info')
+    ->toHtml();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$formKey       = $objectManager->get('Magento\Framework\Data\Form\FormKey');
 ?>
 
 <form class="form contact"
@@ -19,7 +27,10 @@ echo $this->getLayout()
       method="post"
       data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
       data-mage-init='{"validation":{}}'>
+    <?php echo $block->getChildHtml('page.messages') ?>
+
     <fieldset class="fieldset">
+        <input name="form_key" type="hidden" value="<?php $formKey->getFormKey() ?>">
         <legend class="legend"><span><?= $block->escapeHtml(__('Drop Us a Mail')) ?></span></legend><br />
         <div class="field name required">
             <div class="control">

@@ -202,6 +202,7 @@
                     template="Magento_Catalog::product/view/counter.phtml"/>
         </referenceContainer>
 
+        <move element="product.info.review" destination="product-details-container"/>
         <container name="deleteElement" htmlTag="div"/>
         <move element="product.info.review" destination="deleteElement"/>
         <move element="product.info.sku" destination="deleteElement"/>

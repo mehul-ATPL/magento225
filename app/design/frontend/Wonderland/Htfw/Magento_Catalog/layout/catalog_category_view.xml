@@ -61,6 +61,7 @@
                    class="Magento\Customer\Block\CustomerData"
                    template="Magento_Customer::js/customer-data.phtml"/>
         </referenceContainer>
+        <move element="page.messages" destination="product-details-container"/>
         <container name="deleteElement" htmlTag="div"/>
         <move element="page.main.title" destination="category.image"/>
         <referenceContainer name="deleteElement" remove="true"/>

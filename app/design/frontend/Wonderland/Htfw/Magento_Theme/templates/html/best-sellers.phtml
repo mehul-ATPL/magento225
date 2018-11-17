@@ -5,11 +5,15 @@ $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
 $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
 $productCollectionFactory = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
 $collection = $productCollectionFactory->create();
+//$productCollection = $objectManager->create('\Magento\Reports\Model\ResourceModel\Report\Collection\Factory');
+//$collection = $productCollection->create('\Magento\Sales\Model\ResourceModel\Report\Bestsellers\Collection');
+//$collection->setPeriod('month');
 $collection->addAttributeToSelect('*');
 $collection->setPageSize(6); // selecting only 3 products
 $store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
 
 $productBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\ListProduct');
+
 ?>
 
 
