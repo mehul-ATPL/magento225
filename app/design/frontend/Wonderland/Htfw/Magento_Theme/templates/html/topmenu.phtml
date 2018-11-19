@@ -100,6 +100,7 @@ $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 
         <?php } ?>
         <li>
+            <?php echo $block->getChildHtml('customer'); ?>
             <?php /* echo $block->getChildHtml('my-account-link') ?>
             <?php echo $block->getChildHtml('customer'); ?>
             <?php echo $block->getChildHtml('authorization-link');*/ ?>

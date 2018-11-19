@@ -54,14 +54,7 @@
             <block class="Magento\Catalog\Block\Category\Rss\Link" name="rss.link" template="Magento_Catalog::category/rss.phtml"/>
         </referenceBlock>-->
 
-        <referenceContainer name="content">
-            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
-                   template="Magento_Customer::js/section-config.phtml"/>
-            <block name="customer.customer.data"
-                   class="Magento\Customer\Block\CustomerData"
-                   template="Magento_Customer::js/customer-data.phtml"/>
-        </referenceContainer>
-        <move element="page.messages" destination="product-details-container"/>
+        <move element="page.messages" destination="category.products.list" before="-"/>
         <container name="deleteElement" htmlTag="div"/>
         <move element="page.main.title" destination="category.image"/>
         <referenceContainer name="deleteElement" remove="true"/>

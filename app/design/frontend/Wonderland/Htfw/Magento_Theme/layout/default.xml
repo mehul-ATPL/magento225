@@ -25,6 +25,10 @@
             </container>
         </referenceContainer>
 
+        <referenceBlock name="catalog.topnav">
+            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="Magento_Customer::account/customer.phtml" />
+        </referenceBlock>
+
         <referenceBlock name="header-content">
             <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
                 <arguments>
@@ -41,6 +45,18 @@
             <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml" after="footer"/>
         </referenceContainer>
         <container name="deleteElements" htmlTag="div" htmlClass="delete" />
+
+
+        <!--<referenceContainer name="content">
+            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
+                   template="Magento_Customer::js/section-config.phtml"/>
+            <block name="customer.customer.data"
+                   class="Magento\Customer\Block\CustomerData"
+                   template="Magento_Customer::js/customer-data.phtml"/>
+            <block name="customer.data.invalidation.rules" class="Magento\Customer\Block\CustomerScopeData"
+                   template="Magento_Customer::js/customer-data/invalidation-rules.phtml"/>
+        </referenceContainer>-->
+
         <!--<move element="customer.login.container" destination="deleteElements" />-->
         <move element="breadcrumbs" destination="deleteElements"/>
         <referenceContainer name="deleteElements" remove="true" />

@@ -8,6 +8,7 @@ define([
         initialize: function () {
             //initialize parent Component
             this._super();
+            console.log(this._super());
             this.qty = ko.observable(this.defaultQty);
         },
 

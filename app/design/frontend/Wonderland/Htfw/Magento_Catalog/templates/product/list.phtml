@@ -42,8 +42,8 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
      */
     $pos = $block->getPositioned();
     ?>
-
     <div class="block widget block-products-list grid grid-4" >
+        <?php echo $block->getChildHtml('page.messages') ?>
         <div class="products wrapper <?=  $viewMode ?> products-<?=  $viewMode ?>">
         <?php $iterator = 1; ?>
         <ol class="products list items product-items">

@@ -31,17 +31,11 @@
             </arguments>
         </referenceBlock>
 
-        <referenceBlock name="breadcrumbs" template="Magento_Catalog::product/breadcrumbs.phtml">
-            <arguments>
-                <argument name="viewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\Breadcrumbs</argument>
-            </arguments>
-        </referenceBlock>
-
-        <referenceContainer name="main.content" htmlClass="page-main single-product-page">\
+        <referenceContainer name="main.content" htmlClass="page-main single-product-page">
             <referenceContainer name="columns" htmlTag="div" htmlClass="columns">
                 <container htmlClass="column main" htmlTag="div" name="info">
-                    <container htmlClass="product-details-container" htmlTag="div">
-                        <container htmlClass="product-info" htmlTag="div">
+                    <container htmlClass="product-details-container" htmlTag="div" name="product-details-container">
+                        <container htmlClass="product-info" htmlTag="div" name="page.product.info">
                             <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" before="-">
                                 <block class="Magento\Catalog\Block\Product\View" name="product.info.title" template="Magento_Catalog::product/view/title.phtml" before="-" />
                                 <container name="product.info.price" label="Product info auxiliary container" htmlTag="div" htmlClass="product-info-price">
@@ -67,8 +61,7 @@
                                 <container name="alert.urls" as="alert_urls" label="Alert Urls" after="product.price.tier"/>
                                 <block class="Magento\Catalog\Block\Product\View" name="product.info" template="Magento_Catalog::product/view/form.phtml" after="alert.urls">
                                     <container name="product.info.form.content" as="product_info_form_content">
-                                        <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart" as="addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>
-                                        <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart" as="addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>
+                                        <!--<block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart" as="addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>-->
                                     </container>
                                     <block class="Magento\Framework\View\Element\Template" name="product.info.form.options" as="options_container">
                                         <block class="Magento\Catalog\Block\Product\View" name="product.info.options.wrapper" as="product_options_wrapper" template="Magento_Catalog::product/view/options/wrapper.phtml">
@@ -82,7 +75,7 @@
                                             <block class="Magento\Framework\View\Element\Html\Calendar" name="html_calendar" as="html_calendar" template="Magento_Theme::js/calendar.phtml"/>
                                         </block>
                                         <block class="Magento\Catalog\Block\Product\View" name="product.info.options.wrapper.bottom" as="product_options_wrapper_bottom" template="Magento_Catalog::product/view/options/wrapper/bottom.phtml">
-                                            <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart.additional" as="product.info.addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>
+                                            <!--<block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart.additional" as="product.info.addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>-->
                                         </block>
                                     </block>
                                 </block>
@@ -107,7 +100,7 @@
                                             <argument name="title" translate="true" xsi:type="string">Details</argument>
                                         </arguments>
                                     </block>
-                                    <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes" as="additional" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info">
+                                    <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes" as="additional" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info" after="description">
                                         <arguments>
                                             <argument translate="true" name="title" xsi:type="string">More Information</argument>
                                         </arguments>
@@ -165,8 +158,6 @@
                     </container>
                 </container>
             </referenceContainer>
-        </referenceContainer>
-        <referenceContainer name="main.content">
             <block class="Magento\Catalog\Block\Product\ProductList\Related" name="catalog.product.related" template="Magento_Catalog::product/list/items.phtml" after="product-details-container">
                 <arguments>
                     <argument name="type" xsi:type="string">related</argument>
@@ -202,12 +193,14 @@
                     template="Magento_Catalog::product/view/counter.phtml"/>
         </referenceContainer>
 
-        <move element="product.info.review" destination="product-details-container"/>
+        <move element="info" destination="main"/>
+
+        <move element="page.messages" destination="product-details-container" before="-"/>
         <container name="deleteElement" htmlTag="div"/>
         <move element="product.info.review" destination="deleteElement"/>
         <move element="product.info.sku" destination="deleteElement"/>
         <move element="page.main.title" destination="deleteElement"/>
-        <move element="main" destination="deleteElement"/>
+
         <move element="store_language" destination="deleteElement"/>
         <referenceContainer name="deleteElement" remove="true"/>
     </body>

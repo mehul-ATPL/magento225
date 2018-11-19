@@ -15,5 +15,6 @@
  */
 ?>
 <?php if (!$block->isContentMode() || $block->isMixedMode()): ?>
+	<?php echo $block->getChildHtml('page.messages') ?>
     <?= $block->getProductListHtml() ?>
 <?php endif; ?>

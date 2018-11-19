@@ -10,10 +10,16 @@
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $formKey = $objectManager->get('Magento\Framework\Data\Form\FormKey');
 ?>
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base" data-ui-id="page-title-wrapper">Login to Your Account</span>
+    </h1>
+</div>
 <div class="block block-customer-login">
-    <!-- <div class="block-title">
-        <strong id="block-customer-login-heading" role="heading" aria-level="2"><?= $block->escapeHtml(__('Registered Customers')) ?></strong>
-    </div> -->
+
+    <!--<div class="block-title">
+        <strong id="block-customer-login-heading" role="heading" aria-level="2"><?/*= $block->escapeHtml(__('Registered Customers')) */?></strong>
+    </div>-->
     <div class="block-content" aria-labelledby="block-customer-login-heading">
         <form class="form form-login"
               action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"

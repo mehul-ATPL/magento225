@@ -35,6 +35,7 @@
         </referenceContainer>
         <container name="deleteElements" htmlTag="div" htmlClass="delete" />
         <move element="content" destination="deleteElements"/>
+        <move element="page.title" destination="conent"/>
         <referenceContainer name="deleteElements" remove="true" />
     </body>
 </page>
