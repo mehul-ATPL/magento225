@@ -525,6 +525,12 @@ html {
   -o-transform: rotateY(180deg);
   display: inline-block;
 }
+.minicart-wrapper .action.showcart .counter.qty {
+  background: #b80056;
+}
+.minicart-wrapper .action.showcart .counter-number {
+  text-shadow: none;
+}
 @media (min-width: 999px) {
   .nav-sections {
     border: 1px solid rgba(126, 126, 126, 0.4);
@@ -1782,7 +1788,7 @@ html {
   }
   .page-main .banner .blocks-promo .title,
   .page-main .banner .category-image .title {
-    font-size: 3.5em;
+    font-size: 3em;
     text-transform: uppercase;
     margin: 0.1em 0 0.5em 0;
     letter-spacing: 0.05em;
@@ -2850,10 +2856,85 @@ html {
   background-size: cover;
   padding-bottom: 80%;
 }
-.mw-1115 {
-  max-width: 1115px;
+@-moz-keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+  }
+}
+.mw-1280 {
+  max-width: 1280px;
   padding: 1.5em;
   margin: 0 auto;
+}
+.ias-spinner em {
+  font-size: 1.2em;
+  font-style: normal;
+  font-family: "Gotham";
+  text-transform: uppercase;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.ias-spinner img {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: rotation 1.5s infinite linear;
+  -moz-animation: rotation 1.5s infinite linear;
+  animation: rotation 1.5s infinite linear;
+}
+.catalogsearch-result-index .toolbar {
+  margin-top: 0;
+}
+.catalogsearch-result-index .sidebar {
+  text-align: left;
+}
+.catalogsearch-result-index .filter .block-subtitle {
+  padding: 2em 0.75em;
+  font-family: "Gotham";
+  text-transform: uppercase;
+  border-top: 1px solid #cccccc;
 }
 .catalog-category-view .category-description {
   margin-bottom: 0;
@@ -2876,6 +2957,6 @@ html {
     margin-top: 0;
   }
   .catalog-category-view .category-description p {
-    padding-bottom: 3em;
+    padding-bottom: 3em !important;
   }
 }

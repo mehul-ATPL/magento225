@@ -45,7 +45,7 @@
                 </block>
             </container>
         </referenceContainer>
-        <move element="sidebar" destination="info" />
+        <!--<move element="sidebar" destination="info" />-->
         <move element="search.result" destination="content" after="sidebar" />
     </body>
 </page>
