@@ -47,63 +47,20 @@ $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 	        </a>
 	    </li>
 	    <li class="level0 ui-menu-item">
-	        <!-- <a href="#" class="level-top ui-corner-all">
-	            <span>There is <span>1 item</span> in your Basket.</span>
-	        </a> -->
-            <?php echo $block->getChildHtml('checkout_page_head_components') ?>
+            <?php //echo $block->getChildHtml('checkout_page_head_components') ?>
 	        <?php echo $block->getChildHtml('minicart') ?>
 	    </li>
-	    <!--<li class="level0 ui-menu-item">
-            <?php /*if($customerSession->isLoggedIn()) { */?>
-                <a href="<?php /*echo $block->getUrl('customer/account/logout') */?>" class="level-top ui-corner-all">
-                    <span>Logout</span>
-                </a>
-            <?php /*} else { */?>
-	        <a href="<?php /*echo $block->getUrl('customer/account/login') */?>" class="level-top ui-corner-all">
-	            <span>Login</span>
-	        </a>
-
-            <?php /*} */?>
-            <?php /*//echo $block->getChildHtml('my-account-link') */?>
-
-	    </li>-->
+	    <li class="level0 ui-menu-item customer-welcome">
         <?php if($customerSession->isLoggedIn()) { ?>
-        <li class="level0 ui-menu-item customer-welcome">
-            <span class="customer-name active" role="button" tabindex="0" data-toggle="dropdown" data-trigger-keypress-button="true" data-bind="scope: 'customer'" aria-haspopup="true" aria-expanded="true">
-                <span data-bind="text: customer().fullname">Janki</span>
-                <button type="button" class="action switch" tabindex="-1" data-action="customer-menu-toggle">
-                <span>Change</span>
-                </button>
-            </span>
-            <div class="customer-menu" data-target="dropdown" aria-hidden="false">
-                <ul class="header links">
-                    <li>
-                        <a href="<?php echo $block->getUrl('customer/account/') ?>">My Account</a>
-                    </li>
-                    <li class="link wishlist" data-bind="scope: 'wishlist'">
-                        <a href="<?php echo $block->getUrl('wishlist/') ?>">My Wish List</a>
-                    </li>
-                    <li class="authorization-link">
-                        <a href="<?php echo $block->getUrl('customer/account/logout/')?>">
-                            Sign Out
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+            <?php echo $block->getChildHtml('customer'); ?>
         <?php } else { ?>
-        <li class="level0 ui-menu-item customer-welcome">
             <a href="<?php echo $block->getUrl('customer/account/login') ?>" class="level-top ui-corner-all">
                 <span class="customer-name active">Login</span>
             </a>
-        </li>
-
         <?php } ?>
-        <li>
-            <?php echo $block->getChildHtml('customer'); ?>
-            <?php /* echo $block->getChildHtml('my-account-link') ?>
-            <?php echo $block->getChildHtml('customer'); ?>
-            <?php echo $block->getChildHtml('authorization-link');*/ ?>
         </li>
     </ul>
 </nav>
+
+
+

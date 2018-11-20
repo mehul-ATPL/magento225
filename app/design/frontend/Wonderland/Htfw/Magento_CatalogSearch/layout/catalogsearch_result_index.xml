@@ -8,7 +8,8 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <attribute name="class" value="product-page"/>
-        <referenceContainer name="content" htmlClass="bg-off-white" htmlTag="div">
+        <referenceContainer name="main.content" htmlClass="page-main mw-1280" htmlTag="main" />
+         <referenceContainer name="content">
             <container name="catalogsearch" htmlTag="div">
                 <block class="Magento\CatalogSearch\Block\Result" name="search.result" template="Magento_CatalogSearch::result.phtml">
                     <block class="Magento\CatalogSearch\Block\SearchResult\ListProduct" name="search_result_list" template="Magento_Catalog::product/list.phtml">

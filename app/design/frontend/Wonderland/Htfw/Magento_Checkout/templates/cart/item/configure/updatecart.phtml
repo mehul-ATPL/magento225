@@ -7,10 +7,12 @@
 // @codingStandardsIgnoreFile
 
 /** @var $block \Magento\Catalog\Block\Product\View */
+
 ?>
 <?php $_product = $block->getProduct(); ?>
 <?php $buttonTitle = __('Update Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
+<div class="product-options-bottom">
     <div class="box-tocart update">
         <fieldset class="fieldset">
             <?php if ($block->shouldRenderQuantity()): ?>
@@ -21,7 +23,7 @@
                            name="qty"
                            id="qty"
                            value=""
-                           title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                           title="<?=  __('Qty') ?>"
                            class="input-text qty"
                            data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"/>
                 </div>
@@ -30,24 +32,40 @@
             <?php endif; ?>
             <div class="actions">
                 <button type="submit"
-                        title="<?= /* @escapeNotVerified */ $buttonTitle ?>"
+                        title="<?=  $buttonTitle ?>"
                         class="action primary tocart"
                         id="product-updatecart-button">
-                    <span><?= /* @escapeNotVerified */ $buttonTitle ?></span>
+                    <span><?=  $buttonTitle ?></span>
                 </button>
                 <?= $block->getChildHtml('', true) ?>
             </div>
         </fieldset>
     </div>
-    <script type="text/x-magento-init">
-        {
-            "#product_addtocart_form": {
-                "validation": {},
-                "addToCart": {
-                    "cartButtonId": "#product-updatecart-button",
-                    "cartForm": "#product_addtocart_form"
-                }
+</div>
+
+<!--<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "qty_change": {
+                        "component": "Inchoo_QtyIncrementors/js/view/product/view/qty_change",
+                        "defaultQty": <?php /*echo $block->getProductDefaultQty() * 1 */?>
+                    }
+                 }
             }
         }
-    </script>
+    }
+</script>-->
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "validation": {},
+            "addToCart": {
+                "cartButtonId": "#product-updatecart-button",
+                "cartForm": "#product_addtocart_form"
+            }
+        }
+    }
+</script>
 <?php endif; ?>

@@ -11,7 +11,18 @@
 
 <span class="price-container <?=  $block->getAdjustmentCssClasses() ?>"
         <?= $block->getSchema() ? ' itemprop="offers" itemscope itemtype="http://schema.org/Offer"' : '' ?>>
-    
+    <div class="">
+    <?php if ($block->getDisplayLabel()): ?>
+        <span class="price-label">Was : </span>
+    <?php endif; ?>
+            <span <?php if ($block->getPriceId()): ?> id="<?=  $block->getPriceId() ?>"<?php endif;?>
+                <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+                    data-price-amount="<?=  $block->getDisplayValue() ?>"
+                    data-price-type="<?=  $block->getPriceType() ?>"
+                    class="price-wrapper <?=  $block->getPriceWrapperCss() ?>">
+        <?=  $block->formatCurrency($block->getDisplayValue(), (bool)$block->getIncludeContainer()) ?>
+    </span>
+</div>
     <?php if ($block->hasAdjustmentsHtml()): ?>
         <?= $block->getAdjustmentsHtml() ?>
     <?php endif; ?>
@@ -20,15 +31,3 @@
         <meta itemprop="priceCurrency" content="<?=  $block->getDisplayCurrencyCode() ?>" />
     <?php endif; ?>
 </span>
-<div class="offer">
-    <?php if ($block->getDisplayLabel()): ?>
-        <span class="price-label">Was : </span>
-    <?php endif; ?>
-    <span <?php if ($block->getPriceId()): ?> id="<?=  $block->getPriceId() ?>"<?php endif;?>
-        <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
-        data-price-amount="<?=  $block->getDisplayValue() ?>"
-        data-price-type="<?=  $block->getPriceType() ?>"
-        class="price-wrapper <?=  $block->getPriceWrapperCss() ?>">
-        <?=  $block->formatCurrency($block->getDisplayValue(), (bool)$block->getIncludeContainer()) ?>
-    </span>
-</div>

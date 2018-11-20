@@ -11,27 +11,59 @@
 </small>
 </div>
 <script type="text/javascript">
-    /*require(
-     [
-     'jquery'
-     ],
-     function(
-     $
-     ) {
-     $(document).ready(function(){
-     var $root = $('html, body');
-     $('a[href^="#"]').click(function() {
-     var href = $.attr(this, 'href');
 
-     $root.animate({
-     scrollTop: $(href).offset().top
-     }, 1500, function () {
-     window.location.hash = href;
-     });
+    require(
+        [
+            'jquery',
+            'swiper'
+        ],
+        function(
+            $,
+            Swiper
+        ) {
+            $(document).ready(function() {
+                var $root = $('html, body');
+                $('a[href^="#"]').click(function() {
+                    var href = $.attr(this, 'href');
 
-     return false;
-     });
-     });
-     }
-     );*/
+                    $root.animate({
+                        scrollTop: $(href).offset().top
+                    }, 1500, function() {
+                        window.location.hash = href;
+                    });
+
+                    return false;
+                });
+
+                $('.nav-toggle').click(function() {
+                //$('.nav-toggle').click(function() {
+                    $('body').toggleClass('nav-open nav-before-open');
+                });
+
+                $('.mobile-link-btn').click(function () {
+                    $('.footer.links').toggleClass('active');
+                });
+
+            });
+           
+            // Product Slider
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                simulateTouch: false,
+                breakpoints: {
+                    768: {
+                        simulateTouch: true,
+                    },
+                }
+            });
+        }
+    );
 </script>

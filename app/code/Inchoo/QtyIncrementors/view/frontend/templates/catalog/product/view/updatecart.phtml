@@ -1,0 +1,107 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Update Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+<div class="product-options-bottom">
+    <div class="box-tocart update">
+        <fieldset class="fieldset">
+            <?php if ($block->shouldRenderQuantity()): ?>
+            <div class="field qty">
+                <button class="btn btn-minus"  data-bind="click: decreaseQty"></button>
+                <div class="control">
+                    <input type="number"
+                           name="qty"
+                           id="qty"
+                           value=""
+                           title="<?=  __('Qty') ?>"
+                           class="input-text qty"
+                           data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"/>
+                </div>
+                <button class="btn btn-plus"  data-bind="click: increaseQty"></button>
+            </div>
+            <script type="text/x-magento-init">
+                {
+                    "*": {
+                        "Magento_Ui/js/core/app": {
+                            "components": {
+                                "qty_change": {
+                                    "component": "Inchoo_QtyIncrementors/js/view/product/view/qty_change",
+                                    "defaultQty": <?php echo $block->getProductDefaultQty() * 1 ?>
+                                }
+                             }
+                        }
+                    }
+                }
+            </script>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?=  $buttonTitle ?>"
+                        class="action primary tocart"
+                        id="product-updatecart-button">
+                    <span><?=  $buttonTitle ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+            </div>
+        </fieldset>
+    </div>
+</div>
+    <!-- <script type="text/x-magento-init">
+        {
+            "#product_addtocart_form": {
+                "validation": {},
+                "addToCart": {
+                    "cartButtonId": "#product-updatecart-button",
+                    "cartForm": "#product_addtocart_form"
+                }
+            }
+        }
+    </script> -->
+<?php endif; ?>
+
+<?php if ($block->isRedirectToCartEnabled()) : ?>
+    <script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+</script>
+<?php else : ?>
+
+    <script>
+        require([
+            'jquery',
+            'mage/mage',
+            'Magento_Catalog/product/view/validation',
+            'Magento_Catalog/js/catalog-add-to-cart'
+        ], function ($) {
+            'use strict';
+
+            $('#product_addtocart_form').mage('validation', {
+                radioCheckboxClosest: '.nested',
+                submitHandler: function (form) {
+                    var widget = $(form).catalogAddToCart({
+                        bindSubmit: false
+                    });
+
+                    widget.catalogAddToCart('submitForm', $(form));
+
+                    return false;
+                }
+            });
+        });
+    </script>
+<?php endif; ?>

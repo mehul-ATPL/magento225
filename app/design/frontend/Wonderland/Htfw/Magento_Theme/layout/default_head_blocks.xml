@@ -11,8 +11,10 @@
         <css src='fonts/fonts.css' />
         <css src='css/libs/material-design-iconic-font.min.css' />
         <css src='css/libs/flaticon.css' />
+        <css src='css/libs/swiper.min.css' />
         <css src='css/libs/magento-theme-default.css' />
         <css src='css/main-css/main.css' media='all'/>
         <script src="requirejs/require.js"/>
+        <script src="js/swiper.min.js"/>
     </head>
 </page>

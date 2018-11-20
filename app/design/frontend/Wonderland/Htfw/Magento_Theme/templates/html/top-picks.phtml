@@ -6,51 +6,39 @@
 	$productCollectionFactory = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
 	$collection = $productCollectionFactory->create();
 	$collection->addAttributeToSelect('*');
-	$collection->setPageSize(6); // selecting only 3 products
+	$collection->setPageSize(8); // selecting only 3 products
 	$store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
 
 	$productBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\ListProduct');
 ?>
 
 
-
-<!-- seller -->
 <div class="bg-off-white">
-    <!-- start-product-list-title -->
     <div class="content-heading">
         <p class="info">Sellers guide</p>
         <h2 class="title">Our Top Picks</h2>
     </div>
-    <!-- end-product-list-title -->
-    <!-- start-product-list -->
     <div class="block widget block-products-list grid grid-4">
         <div class="block-content">
-            <div class="products-grid grid">
-                <ol class="product-items widget-product-grid">
+            <div class="products-grid grid swiper-container">
+                <ol class="product-items widget-product-grid swiper-wrapper">
                     <?php foreach ($collection as $product) { 
 
                     	$productImageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' . $product->getData('image');
                 		$postParams = $productBlock->getAddToCartPostParams($product); 
                 	?>
-                    <li class="product-item">
+                    <li class="product-item swiper-slide">
                         <div class="product-item-info">
                             <div class="product-item-name">
                                 <?php echo $product->getName(); ?>
                             </div>
                             <a href="<?php echo $product->getProductUrl(); ?>" class="product-item-photo">
                                 <span class="product-image-container">
-                                <span class="product-image-wrapper">
-                                  <img src="<?php echo $productImageUrl; ?>" class="product-image-photo" />
-                                </span>
+                                    <span class="product-image-wrapper">
+                                    <img src="<?php echo $productImageUrl; ?>" class="product-image-photo" />
+                                    </span>
                                 </span>
                             </a>
-                            <!-- <div class="product-item-details">
-                                <div class="price-box price-final_price">
-                                    <?php echo $abstractProductBlock->getProductPrice($product); ?>
-                                </div>
-                                <div class="offer">Was: £10.99 (51% off)</div>
-                            </div> -->
-
                             <div class="product-item-details">
                                 <div class="price-box price-final_price">
                                     <span class="price-container price-final_price tax weee">
@@ -79,16 +67,20 @@
                         </div>
                     </li>
                     <?php } ?>
-
                 </ol>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></svg>
+                </div>
+                <div class="swiper-button-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></svg>
+                </div>
             </div>
         </div>
     </div>
-    <!-- end-product-list -->
 </div>
-<!-- end seller -->
 <style type="text/css">
-	.page-layout-1column .block.widget .products-grid .product-item {
+	/*.page-layout-1column .block.widget .products-grid .product-item {
 		margin-left: 0px !important;
 	}
 
@@ -101,5 +93,5 @@
 
 	.price-container .weee:after {
 		content: none;
-	}
+	}*/
 </style>

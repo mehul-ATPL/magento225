@@ -11,20 +11,10 @@ $columnsLimit = 0;
 //$columnsLimit = $headerBlock->getColumnsLimit() ?: 0; 
 $_menu = $headerBlock->getHtml('nav item', 'submenu', $columnsLimit);
 ?>
-
+<button class="mobile-link-btn">QuickLinks</button>
 <ul class="footer links" style="/* display: none; */">
     <li class="nav item">
         <a href="<?php echo $block->getUrl('about-us') ?>">About us</a>
     </li>
     <?php echo $_menu ?>
 </ul>
-
-<style type="text/css">
-    .footer.content { 
-        margin-top: 0 !important;
-
-    }
-    .price-container .weee:after {
-        display: none;
-    }
-</style>
