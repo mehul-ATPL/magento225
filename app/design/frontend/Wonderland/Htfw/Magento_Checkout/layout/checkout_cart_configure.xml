@@ -13,12 +13,12 @@
     <body>
         <referenceBlock name="product.info.addtocart">
             <action method="setTemplate">
-                <argument name="template" xsi:type="string">Inchoo_QtyIncrementors::catalog/product/view/updatecart.phtml</argument>
+                <argument name="template" xsi:type="string">Inchoo_QtyIncrementors::catalog/product/view/addtocart.phtml</argument>
             </action>
         </referenceBlock>
         <referenceBlock name="product.info.addtocart.additional">
             <action method="setTemplate">
-                <argument name="template" xsi:type="string">Inchoo_QtyIncrementors::catalog/product/view/updatecart.phtml</argument>
+                <argument name="template" xsi:type="string">Inchoo_QtyIncrementors::catalog/product/view/addtocart.phtml</argument>
             </action>
         </referenceBlock>
     </body>

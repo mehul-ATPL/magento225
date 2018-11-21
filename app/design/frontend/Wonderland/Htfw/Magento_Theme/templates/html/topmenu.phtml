@@ -15,6 +15,11 @@
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 
+
+$categoryBlock = $objectManager->create('Magento\Catalog\Block\Category\View');
+
+
+var_dump(get_class_methods($categoryBlock));die;
 ?>
 <?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
 <?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
@@ -57,6 +62,11 @@ $customerSession = $objectManager->get('Magento\Customer\Model\Session');
             <a href="<?php echo $block->getUrl('customer/account/login') ?>" class="level-top ui-corner-all">
                 <span class="customer-name active">Login</span>
             </a>
+            <span>OR</span>
+            <a href="<?php echo $block->getUrl('customer/account/create') ?>" class="level-top ui-corner-all">
+                <span>Create Account</span>
+            </a>
+
         <?php } ?>
         </li>
     </ul>

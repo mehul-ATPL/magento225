@@ -128,6 +128,7 @@ return [
         'Strategery_Infinitescroll' => 1,
         'Temando_Shipping' => 1,
         'Vertex_Tax' => 1,
-        'Wonderland_Catalog' => 1
+        'Wonderland_Catalog' => 1,
+        'Wonderland_CategoryAttribute' => 1
     ]
 ];

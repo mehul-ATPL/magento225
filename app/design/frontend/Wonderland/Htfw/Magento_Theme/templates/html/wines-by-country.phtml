@@ -13,6 +13,7 @@ $_subCategories = $_category->getChildrenCategories();
     <div class="dropdown-container">
         <div class="select-country-dropdown">
             <select onChange="top.location.href=this.options[this.selectedIndex].value;">
+                <option value="">Select Country</option>
                 <?php foreach ($_subCategories as $_subCategory) { ?>
                 <option value="<?php echo $baseUrl.$_subCategory->getData('request_path'); ?>"><?php echo $_subCategory->getName() ?></option>
                 <?php } ?>

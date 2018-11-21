@@ -12,7 +12,7 @@
         <referenceContainer name="page.messages">
             <block class="Magento\Checkout\Block\Cart\ValidationMessages" name="checkout.cart.validationmessages"/>
         </referenceContainer>
-        <referenceContainer name="content" htmlClass="mw-1280" htmlTag="main">
+        <referenceContainer name="content">
             <block class="Magento\Checkout\Block\Cart" name="checkout.cart" template="Magento_Checkout::cart.phtml" cacheable="false">
                 <container name="checkout.cart.items" as="with-items">
                     <container name="checkout.cart.container" htmlTag="div" htmlClass="cart-container" before="-">
@@ -206,5 +206,8 @@
             </block>
         </referenceContainer>
         <block class="Magento\Checkout\Block\Cart\Additional\Info" name="additional.product.info" template="Magento_Checkout::cart/additional/info.phtml"/>
+        <move element="page.main.title" destination="content" before="-" />
+
+        <referenceContainer name="main.content" htmlClass="page-main mw-1280" />
     </body>
 </page>

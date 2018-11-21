@@ -214,9 +214,6 @@ input {
   color: #606060 !important;
   font-family: 'Gotham-Book';
 }
-select {
-  background: none;
-}
 select:focus {
   box-shadow: none !important;
 }
@@ -249,6 +246,7 @@ input[type="checkbox"],
 input[type="radio"] {
   position: absolute;
   left: -9999px;
+  height: auto;
 }
 input[type="checkbox"] + label,
 input[type="radio"] + label {
@@ -256,6 +254,7 @@ input[type="radio"] + label {
   padding-left: 1.875rem;
   font-size: 1rem;
   cursor: pointer;
+  overflow: inherit !important;
 }
 input[type="checkbox"] + label:before,
 input[type="radio"] + label:before,
@@ -602,6 +601,21 @@ html {
 }
 .minicart-wrapper .action.showcart .counter-number {
   text-shadow: none;
+}
+#minicart-content-wrapper .paypal-logo input[type="image"] {
+  padding: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  max-width: 100%;
+}
+#minicart-content-wrapper .paypal-logo input[type="image"]:focus {
+  box-shadow: none;
+}
+.minicart-wrapper .action.showcart:before {
+  font-family: "Flaticon" !important;
+  content: '\f154' !important;
+  color: #b80056 !important;
 }
 @media (min-width: 999px) {
   .nav-sections {
@@ -2221,6 +2235,9 @@ html {
   height: 6.25em;
 }
 @media (max-width: 575px) {
+  .login-page {
+    font-size: 0.8rem;
+  }
   .login-page .field {
     width: 100%;
     float: none;
@@ -2241,6 +2258,9 @@ html {
 }
 .product-page .price-container .weee:after {
   display: none;
+}
+.product-page select {
+  background: none;
 }
 .product-page .toolbar {
   max-width: 1115px;
@@ -2317,7 +2337,7 @@ html {
 .page-products .columns {
   padding-top: 0;
 }
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .catalog-category-view.page-layout-1column .column.main {
     padding-top: 0 !important;
   }
@@ -2928,6 +2948,100 @@ html {
   background-size: cover;
   padding-bottom: 80%;
 }
+.customer-account-create .form-create-account {
+  background-color: #fff;
+  padding: 0em 2em 1em 2em;
+}
+.customer-account-create .form-create-account .page-title-wrapper .page-title {
+  font-size: 3.625em;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.55em 0;
+}
+.customer-account-create .form-create-account .create {
+  margin: 0 auto;
+  max-width: 625px;
+  padding-bottom: 1.5em;
+}
+.customer-account-create .form-create-account .legend span {
+  font-size: 1em;
+  font-family: 'Playfair Display';
+  color: #363636;
+  margin: 0 0 0.625rem 0;
+}
+.customer-account-create .form-create-account .field {
+  width: 100%;
+  float: none;
+  margin: 1em 0;
+}
+.customer-account-create .form-create-account .field:last-child {
+  display: inline-block;
+}
+.customer-account-create .form-create-account .field .label {
+  font-family: "Gotham";
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+.customer-account-create .form-create-account .field.newsletter .label {
+  font-family: "Gotham-Book";
+  text-transform: none;
+}
+.customer-account-create .form-create-account .actions-toolbar {
+  padding: 0em 2em 1em 2em;
+  text-align: center;
+}
+.customer-account-create .form-create-account .actions-toolbar .primary {
+  float: none;
+}
+.customer-account-create .form-create-account .actions-toolbar .primary button {
+  margin-right: 0;
+}
+@media (min-width: 768px) {
+  .customer-account-create .abs-margin-for-forms-desktop,
+  .customer-account-create .fieldset .legend,
+  .customer-account-create .column:not(.sidebar-main) form .actions-toolbar,
+  .customer-account-create .column:not(.sidebar-additional) form .actions-toolbar,
+  .customer-account-create .login-container .fieldset:after {
+    margin-left: 0;
+  }
+  .customer-account-create .fieldset > .field:not(.choice) > .label {
+    text-align: left;
+    padding: 0;
+  }
+  .customer-account-create .form.password.reset,
+  .customer-account-create .form.send.confirmation,
+  .customer-account-create .form.password.forget,
+  .customer-account-create .form.create.account {
+    max-width: 1060px;
+    margin: 0 auto;
+    width: 100%;
+    min-width: inherit;
+  }
+  .customer-account-create .fieldset > .field:not(.choice) > .control,
+  .customer-account-create .fieldset > .field:not(.choice) > .label {
+    width: 100%;
+    float: none;
+  }
+  .customer-account-create .fieldset > .field.choice:before,
+  .customer-account-create .fieldset > .field.no-label:before {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .customer-account-create .form-create-account .legend span {
+    font-size: 0.85em;
+  }
+  .customer-account-create .form-create-account .actions-toolbar {
+    padding: 0 0 1em 0;
+  }
+  .customer-account-create .form-create-account .page-title-wrapper .page-title {
+    font-size: 2.5em;
+  }
+}
 @-moz-keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -3030,5 +3144,295 @@ html {
   }
   .catalog-category-view .category-description p {
     padding-bottom: 3em !important;
+  }
+}
+body.checkout-cart-index .page-title {
+  font-size: 3.625em;
+  line-height: 1.5;
+}
+body.checkout-cart-index .page-main {
+  background-color: #fff;
+}
+body.checkout-cart-index .cart.table-wrapper .cart.item .item-info td {
+  padding: 1em;
+  vertical-align: middle;
+}
+body.checkout-cart-index .cart.table-wrapper .cart.item .item-info td .input-text.qty {
+  padding: 0;
+  margin-top: 0;
+}
+body.checkout-cart-index .cart.table-wrapper .cart.item .product-image-container {
+  max-width: 100px;
+}
+body.checkout-cart-index .cart.table-wrapper .cart.item .product-item-details {
+  vertical-align: middle;
+  padding-bottom: 0;
+}
+body.checkout-cart-index .cart.table-wrapper .cart.item .product-item-details .product-item-name {
+  font-size: 1.2em;
+  color: #606060;
+  margin: 0;
+}
+body.checkout-cart-index .cart.table-wrapper .cart thead tr th.col {
+  padding: 1em;
+  font-family: "Gotham";
+  font-weight: 500;
+  text-transform: uppercase;
+}
+body.checkout-cart-index .cart.table-wrapper .cart-price {
+  font-size: 0.75em;
+  color: #606060;
+}
+body.checkout-cart-index .cart.table-wrapper .action-edit:before,
+body.checkout-cart-index .cart.table-wrapper .action-delete:before {
+  font-family: 'Material-Design-Iconic-Font';
+  color: #606060;
+}
+body.checkout-cart-index .cart.table-wrapper .action-edit:before {
+  content: '\f158';
+}
+body.checkout-cart-index .cart.table-wrapper .action-delete:before {
+  content: '\f154';
+}
+body.checkout-cart-index .cart.table-wrapper .item-actions td {
+  padding: 1em;
+}
+body.checkout-cart-index .cart.main.actions button {
+  background-color: #fff;
+  border: 1px solid transparent;
+  padding: 0.625em 1.25em 0.625em 1.25em;
+  font-size: 0.875em;
+  line-height: 1.9375em;
+  color: #b80056;
+  text-transform: uppercase;
+  font-family: "Gotham";
+  cursor: pointer;
+  transition: 0.2s all linear;
+  -webkit-transition: 0.2s all linear;
+  -moz-transition: 0.2s all linear;
+  -ms-transition: 0.2s all linear;
+  -o-transition: 0.2s all linear;
+  position: relative;
+  outline: 0;
+  box-shadow: none;
+  border-radius: 0;
+  display: inline-block;
+  background-color: #b80056;
+  color: #fff;
+}
+body.checkout-cart-index .cart.main.actions button:hover {
+  background-color: #fff;
+  color: #b80056;
+  border-color: transparent;
+}
+body.checkout-cart-index .cart-summary .summary.title {
+  font-size: 1.4em;
+  font-family: 'Playfair Display';
+}
+body.checkout-cart-index .cart-summary .block .title strong {
+  font-size: 1.2em;
+}
+body.checkout-cart-index .cart-summary .block .title strong,
+body.checkout-cart-index .cart-summary .label,
+body.checkout-cart-index .cart-summary .item-title {
+  font-family: "Gotham";
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #606060;
+}
+body.checkout-cart-index .cart-summary .item-title {
+  margin-bottom: 0.5em;
+}
+body.checkout-cart-index .cart-summary select {
+  font-family: 'Gotham-Book';
+  height: 3em;
+  padding: 0 3em 0 1em;
+  font-size: 0.875em;
+  border: 1px solid rgba(236, 236, 236);
+}
+body.checkout-cart-index .cart-summary .input-text {
+  padding: 0 1em;
+  font-size: 0.875em;
+}
+body.checkout-cart-index .cart-summary .fieldset {
+  margin-bottom: 0.5em !important;
+}
+body.checkout-cart-index .cart-summary #block-summary {
+  padding-bottom: 0;
+}
+body.checkout-cart-index .cart-summary .grand.totals .mark,
+body.checkout-cart-index .cart-summary .grand.totals .amount {
+  font-size: 1.2em;
+}
+body.checkout-cart-index .cart-summary .checkout-methods-items button.checkout {
+  font-size: 1.2em !important;
+  padding: 0.2em !important;
+  line-height: 1.5 !important;
+}
+body.checkout-cart-index .cart-summary .paypal-logo input[type="image"] {
+  padding: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  max-width: 100%;
+}
+body.checkout-cart-index .cart-summary .item-options input[type="radio"] + label {
+  font-family: 'Gotham-Book';
+  text-transform: none;
+}
+@media (min-width: 768px) {
+  body.checkout-cart-index .cart-container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+  }
+  body.checkout-cart-index .cart-container .cart-summary,
+  body.checkout-cart-index .cart-container .form-cart {
+    float: none;
+    width: auto;
+  }
+  body.checkout-cart-index .cart-container .cart-summary {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  body.checkout-cart-index .cart-container .form-cart {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+}
+@media (max-width: 767px) {
+  body.checkout-cart-index .page-title {
+    font-size: 2.5em;
+  }
+  body.checkout-cart-index .page-main {
+    padding-top: 0;
+  }
+  body.checkout-cart-index .cart.table-wrapper .product-item-photo {
+    position: relative;
+    left: 0;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100px;
+    top: 0;
+  }
+  body.checkout-cart-index .cart.table-wrapper .product-item-details {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  body.checkout-cart-index .cart.table-wrapper .item-info td {
+    text-align: left;
+  }
+  body.checkout-cart-index .cart.table-wrapper .item-info td:before {
+    font-family: "Gotham";
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  body.checkout-cart-index .cart.table-wrapper .cart-price {
+    font-size: 0.55em;
+  }
+}
+body.checkout-index-index .page-header {
+  max-width: 1280px;
+  padding: 1em 0;
+  margin: 0 auto;
+  width: 100%;
+  font-size: 1rem;
+  height: 112px;
+}
+body.checkout-index-index .page-header .logo {
+  margin: 0;
+  max-width: 7.5em;
+}
+body.checkout-index-index .page-main {
+  background-color: #fff;
+}
+body.checkout-index-index .header.content {
+  padding: 0;
+  height: auto !important;
+  font-size: 1rem;
+}
+body.checkout-index-index .authentication-wrapper {
+  margin-top: -92px;
+}
+body.checkout-index-index .authentication-wrapper .action {
+  font-size: 1.0625em;
+  color: #b80056;
+  font-family: "Gotham";
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 0.75em;
+}
+body.checkout-index-index .opc-progress-bar .opc-progress-bar-item > span {
+  font-size: 1rem;
+}
+body.checkout-index-index .opc-progress-bar .opc-progress-bar-item > span:after {
+  font-size: 1rem;
+}
+body.checkout-index-index .form-login .field-tooltip,
+body.checkout-index-index #shipping-new-address-form .field-tooltip {
+  top: 0.9375em;
+}
+body.checkout-index-index .fieldset > .field:not(.choice) > .label {
+  font-family: "Gotham";
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+body.checkout-index-index #checkout-step-shipping_method input[type="checkbox"],
+body.checkout-index-index #checkout-step-shipping_method input[type="radio"] {
+  position: static;
+}
+body.checkout-index-index #checkout-step-shipping_method .actions-toolbar {
+  margin-left: 0;
+}
+body.checkout-index-index #checkout-step-shipping_method .actions-toolbar button {
+  font-size: 1.2em;
+  padding: 0.5em 2em;
+}
+body.checkout-index-index .opc-wrapper .step-title {
+  font-size: 2em;
+  font-family: 'Playfair Display';
+  color: #363636;
+  margin: 0 0 0.625rem 0;
+}
+body.checkout-index-index .opc-block-summary span.title {
+  font-size: 1.4em;
+  font-family: 'Playfair Display';
+}
+body.checkout-index-index .opc-block-summary .items-in-cart > .title strong {
+  font-size: 1.2rem;
+}
+body.checkout-index-index .opc-estimated-wrapper {
+  margin: -25px -24px 24px;
+}
+@media (min-width: 768px) {
+  body.checkout-index-index .fieldset > .field:not(.choice) > .label {
+    text-align: left;
+    margin-bottom: 0.5em;
+    padding: 0;
+  }
+  body.checkout-index-index .opc-wrapper .form-login,
+  body.checkout-index-index .opc-wrapper .form-shipping-address {
+    max-width: 100%;
+  }
+  body.checkout-index-index .fieldset > .field:not(.choice) > .control,
+  body.checkout-index-index .fieldset > .field:not(.choice) > .label {
+    float: none;
+    width: 100%;
+  }
+  body.checkout-index-index .opc-wrapper .fieldset > .field.required > label:after,
+  body.checkout-index-index .opc-wrapper .fieldset > .field._required > label:after {
+    top: 0;
+  }
+}
+@media (max-width: 639px) {
+  .opc-wrapper .form-login,
+  .opc-wrapper .form-shipping-address,
+  .opc-wrapper .methods-shipping {
+    margin: 25px -24px 15px;
   }
 }
