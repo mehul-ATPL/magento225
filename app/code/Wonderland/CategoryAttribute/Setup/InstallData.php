@@ -39,6 +39,7 @@ class InstallData implements InstallDataInterface
                 'visible' => true,
                 'visible_on_front' => true,
                 'sort_order' => 4,
+                'filterable' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'wysiwyg_enabled' => false,
                 'is_html_allowed_on_front' => false,

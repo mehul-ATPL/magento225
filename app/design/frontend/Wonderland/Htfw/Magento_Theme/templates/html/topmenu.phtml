@@ -14,60 +14,60 @@
  */
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$categoryFactory = $objectManager->create('Magento\Catalog\Model\ResourceModel\Category\CollectionFactory');
+$categoriesCollection = $categoryFactory->create()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('submenu_category', 1)
+                        ->setStore($storeManager->getStore());
+$baseUrl = $storeManager->getStore()->getBaseUrl();
 
 
-$categoryBlock = $objectManager->create('Magento\Catalog\Block\Category\View');
-
-
-var_dump(get_class_methods($categoryBlock));die;
 ?>
 <?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
 <?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
 
 <nav class="navigation" data-action="navigation">
     <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
-
-	    <li class="level0 ui-menu-item">
-	        <a href="#" class="level-top ui-corner-all">
-	            <span>Offers</span>
-	        </a>
-	    </li>
-	    <li class="level0 ui-menu-item">
-	        <a href="#" class="level-top ui-corner-all">
-	            <span>Rewards</span>
-	        </a>
-	    </li>
-	    <li class="level0 ui-menu-item">
-	        <a style="cursor: pointer;" class="level-top ui-corner-all">
-	            <span>No minimum order</span>
-	        </a>
-	    </li>
-	    <li class="level0 ui-menu-item">
-	    	<?php // $block->getChildHtml()?>
-	    	<?php echo $block->getChildHtml('topSearch') ?>
-	    </li>
-	    <li class="level0 ui-menu-item">
-	        <a style="cursor: pointer;" class="level-top ui-corner-all">
-	            <span>Free Delivery over £175</span>
-	        </a>
-	    </li>
-	    <li class="level0 ui-menu-item">
-            <?php //echo $block->getChildHtml('checkout_page_head_components') ?>
-	        <?php echo $block->getChildHtml('minicart') ?>
-	    </li>
-	    <li class="level0 ui-menu-item customer-welcome">
-        <?php if($customerSession->isLoggedIn()) { ?>
-            <?php echo $block->getChildHtml('customer'); ?>
-        <?php } else { ?>
-            <a href="<?php echo $block->getUrl('customer/account/login') ?>" class="level-top ui-corner-all">
-                <span class="customer-name active">Login</span>
-            </a>
-            <span>OR</span>
-            <a href="<?php echo $block->getUrl('customer/account/create') ?>" class="level-top ui-corner-all">
-                <span>Create Account</span>
-            </a>
-
+        <?php foreach ($categoriesCollection as $category) { ?>
+            <li class="level0 ui-menu-item">
+                <a href="<?php echo $baseUrl.$category->getData('request_path'); ?>" class="level-top ui-corner-all">
+                    <span><?php echo $category->getName(); ?></span>
+                </a>
+            </li>
         <?php } ?>
+
+        <li class="level0 ui-menu-item">
+            <a style="cursor: pointer;" class="level-top ui-corner-all">
+                <span>No minimum order</span>
+            </a>
+        </li>
+        <li class="level0 ui-menu-item">
+            <?php // $block->getChildHtml()?>
+            <?php echo $block->getChildHtml('topSearch') ?>
+        </li>
+        <li class="level0 ui-menu-item">
+            <a style="cursor: pointer;" class="level-top ui-corner-all">
+                <span>Free Delivery over £175</span>
+            </a>
+        </li>
+        <li class="level0 ui-menu-item">
+            <?php //echo $block->getChildHtml('checkout_page_head_components') ?>
+            <?php echo $block->getChildHtml('minicart') ?>
+        </li>
+        <li class="level0 ui-menu-item customer-welcome">
+            <?php if ($customerSession->isLoggedIn()) { ?>
+                <?php echo $block->getChildHtml('customer'); ?>
+            <?php } else { ?>
+                <a href="<?php echo $block->getUrl('customer/account/login') ?>" class="level-top ui-corner-all">
+                    <span class="customer-name active">Login</span>
+                </a>
+                <span>OR</span>
+                <a href="<?php echo $block->getUrl('customer/account/create') ?>" class="level-top ui-corner-all">
+                    <span>Create Account</span>
+                </a>
+
+            <?php } ?>
         </li>
     </ul>
 </nav>
