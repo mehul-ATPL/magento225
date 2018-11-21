@@ -1,0 +1,28 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$baseUrl = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore()->getBaseUrl();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_category = $block->getCurrentCategory();
+$_subCategories = $_category->getChildrenCategories();
+?>
+<div class="country-section">
+    <div class="content-heading">
+        <p class="info">Shop for wine by country</p>
+        <h2 class="title">Select a Country Below</h2>
+    </div>
+    <div class="dropdown-container">
+        <div class="select-country-dropdown">
+            <select onChange="top.location.href=this.options[this.selectedIndex].value;">
+                <?php foreach ($_subCategories as $_subCategory) { ?>
+                <option value="<?php echo $baseUrl.$_subCategory->getData('request_path'); ?>"><?php echo $_subCategory->getName() ?></option>
+                <?php } ?>
+            </select>
+        </div>
+    </div>
+    <div class="map-section">
+        <div>
+            <div class="map-img" style="background-image: url('<?php echo $this->getViewFileUrl("images/country-map.png"); ?>');">
+            </div>
+        </div>
+    </div>
+</div>

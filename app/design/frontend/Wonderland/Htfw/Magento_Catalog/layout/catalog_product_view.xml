@@ -31,7 +31,7 @@
             </arguments>
         </referenceBlock>
 
-        <referenceContainer name="main.content" htmlClass="page-main single-product-page">
+        <referenceContainer name="main.content" htmlClass="page-main single-product-page home-page">
             <referenceContainer name="columns" htmlTag="div" htmlClass="columns">
                 <container htmlClass="column main" htmlTag="div" name="info">
                     <container htmlClass="product-details-container" htmlTag="div" name="product-details-container">

@@ -176,8 +176,8 @@ switch ($type = $block->getType()) {
             <button type="button" class="action select" role="select-all"><span><?/*= __('select all') */?></span></button>
         </div>
         --><?php /*endif;*/ ?>
-        <div class="products wrapper grid products-grid products-<?= $type ?>">
-            <ol class="products list items product-items">
+        <div class="products wrapper grid products-grid products-<?= $type ?> swiper-container">
+            <ol class="products list items product-items swiper-wrapper">
                 <?php $iterator = 1; ?>
                 <?php foreach ($items as $_item): ?>
                 <?php $available = ''; ?>
@@ -187,12 +187,12 @@ switch ($type = $block->getType()) {
                     <?php endif; ?>
                 <?php endif; ?>
                 <?php if ($type == 'related' || $type == 'upsell'): ?>
-                    <?= ($iterator++ == 1) ? '<li class="item product product-item" style="display: none;">' : '</li><li class="item product product-item" style="display: none;">' ?>
+                    <?= ($iterator++ == 1) ? '<li class="item product product-item  swiper-slide">' : '</li><li class="item product product-item swiper-slide">' ?>
                 <?php else: ?>
-                    <?= ($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
+                    <?= ($iterator++ == 1) ? '<li class="item product product-item  swiper-slide">' : '</li><li class="item product product-item swiper-slide">' ?>
                 <?php endif; ?>
 
-                <div class="product-item-info <?= $available ?>">
+                <div class="product-item-info <?= $available ?> ">
                     <strong class="product name product-item-name"><a class="product-item-link" title="<?= $block->escapeHtml($_item->getName()) ?>" href="<?= $block->getProductUrl($_item) ?>">
                             <?= $block->escapeHtml($_item->getName()) ?></a>
                     </strong>
@@ -201,7 +201,6 @@ switch ($type = $block->getType()) {
                         <?= $block->getImage($_item, $image)->toHtml() ?>
                     </a>
                     <div class="product details product-item-details">
-
 
                         <?= $block->getProductPrice($_item) ?>
 
@@ -253,6 +252,13 @@ switch ($type = $block->getType()) {
                     <?= ($iterator == count($items)+1) ? '</li>' : '' ?>
                 <?php endforeach ?>
             </ol>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></svg>
+            </div>
+            <div class="swiper-button-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></svg>
+            </div>
         </div>
     </div>
 </div>
